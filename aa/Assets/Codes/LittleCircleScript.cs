@@ -7,9 +7,12 @@ public class LittleCircleScript : MonoBehaviour
     // Start is called before the first frame update
     Rigidbody2D physics;
     public float speed;
+    bool isMovement = false;
+    GameObject cycle;
     void Start()
     {
         physics=GetComponent<Rigidbody2D>();
+        cycle = GameObject.FindGameObjectWithTag("Cycle");
     }
 
     // Update is called once per frame
@@ -20,6 +23,23 @@ public class LittleCircleScript : MonoBehaviour
     }
     void FixedUpdate()
     {
-        physics.MovePosition(physics.position + Vector2.up * speed * Time.deltaTime);
+        if(!isMovement)
+        {
+            physics.MovePosition(physics.position + Vector2.up * speed * Time.deltaTime);
+        }
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.tag=="RotatingCircle")
+        {
+            isMovement = true;
+            transform.SetParent(collider.transform);
+        }
+        if(collider.tag=="LittleCircle")
+        {
+            cycle.GetComponent<Cycle>().GameOver();
+        }
     }
 }
