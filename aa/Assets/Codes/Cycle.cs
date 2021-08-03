@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Cycle : MonoBehaviour
 {
@@ -8,10 +10,16 @@ public class Cycle : MonoBehaviour
     GameObject RotatingCircle;
     GameObject ThrowingCircle;
     public Animator anim;
+    public Text rotatingCircleLevel;
+    public Text textRotatingCircle;
+    public Text textCircle1;
+    public Text textCircle2;
+    public int circlesLeft;
     void Start()
     {
         RotatingCircle = GameObject.FindGameObjectWithTag("RotatingCircle");
         ThrowingCircle = GameObject.FindGameObjectWithTag("ThrowerCircle");
+        rotatingCircleLevel.text = SceneManager.GetActiveScene().name;
     }
 
     // Update is called once per frame
