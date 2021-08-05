@@ -13,6 +13,7 @@ public class LittleCircleScript : MonoBehaviour
     {
         physics=GetComponent<Rigidbody2D>();
         cycle = GameObject.FindGameObjectWithTag("Cycle");
+           
     }
 
     // Update is called once per frame

@@ -7,9 +7,10 @@ public class ThrowerCircleScript : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject littleCircle;
+    GameObject cycle;
     void Start()
     {
-        
+        cycle = GameObject.FindGameObjectWithTag("Cycle");
     }
 
     // Update is called once per frame
@@ -23,6 +24,7 @@ public class ThrowerCircleScript : MonoBehaviour
     void CreateLittleCircle()
     {
         Instantiate(littleCircle, transform.position, transform.rotation);
+        cycle.GetComponent<Cycle>().TextUpdateCircles();
     }
 }
 
