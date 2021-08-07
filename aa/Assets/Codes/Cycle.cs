@@ -17,7 +17,8 @@ public class Cycle : MonoBehaviour
     public int circlesLeft;
     void Start()
     {
-        PlayerPrefs.SetInt("save", int.Parse(SceneManager.GetActiveScene().name));
+       PlayerPrefs.SetInt("save", int.Parse(SceneManager.GetActiveScene().name));
+        Debug.Log("Buraya girdi.");
         RotatingCircle = GameObject.FindGameObjectWithTag("RotatingCircle");
         ThrowingCircle = GameObject.FindGameObjectWithTag("ThrowerCircle");
         rotatingCircleLevel.text = SceneManager.GetActiveScene().name;
@@ -81,7 +82,8 @@ public class Cycle : MonoBehaviour
     {
         RotatingCircle.GetComponent<Rotation>().enabled = false;
         ThrowingCircle.GetComponent<ThrowerCircleScript>().enabled = false;
-        yield return new WaitForSeconds(1);
         anim.SetTrigger("GameOver");
+        yield return new WaitForSeconds(1);
+        
     }
 }
