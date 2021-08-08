@@ -28,6 +28,7 @@ public class LittleCircleScript : MonoBehaviour
         {
             physics.MovePosition(physics.position + Vector2.up * speed * Time.deltaTime);
         }
+
         
     }
 
@@ -39,6 +40,14 @@ public class LittleCircleScript : MonoBehaviour
             transform.SetParent(collider.transform);
         }
         if(collider.tag=="LittleCircle")
+        {
+            cycle.GetComponent<Cycle>().GameOver();
+        }
+        cycle.GetComponent<Cycle>().circlesLeft--;
+        cycle.GetComponent<Cycle>().circlesToNextLevel--;
+        cycle.GetComponent<Cycle>().TextUpdateCircles();
+        //If no more circles to throw left, then game over.
+        if (cycle.GetComponent<Cycle>().circlesLeft <= 0)
         {
             cycle.GetComponent<Cycle>().GameOver();
         }

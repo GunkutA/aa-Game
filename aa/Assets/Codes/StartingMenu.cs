@@ -7,7 +7,16 @@ public class StartingMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //index 0 is Start Menu and index 1 is Game Scene. So just increase the index from 0 to 1.
+        int savedLevel = PlayerPrefs.GetInt("save");
+        if (savedLevel == 0)
+        {
+            SceneManager.LoadScene(savedLevel + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene(savedLevel);
+        }
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //index 0 is Start Menu and index 1 is Game Scene. So just increase the index from 0 to 1.
     }
 
     public void QuitGame()
